@@ -1,63 +1,93 @@
 function ConvertHandler() {
-	this.initNum = 0;
-	this.initUnit = "";
-	this.returnNum = 0;
-	this.returnUnit = "";
+	this.getNum = function (input) {
+		let result;
 
-	this.setNum = function (input) {
-		this.initNum = Number(input);
+		let nonNumericIndex = Array.from(input).findIndex((char) =>
+			isNaN(Number(char))
+		);
+		// Extract numeric and non-numeric parts
+		result = Number(input.substring(0, nonNumericIndex));
+		console.log(result);
+
+		return result;
 	};
 
-	this.setUnit = function (input) {
-		this.initUnit = input;
-	};
+	this.getUnit = function (input) {
+		let result;
 
-	this.getNum = function () {
-		return this.initNum;
-	};
-
-	this.getUnit = function () {
-		return this.initUnit;
+		let nonNumericIndex = Array.from(input).findIndex((char) =>
+			isNaN(Number(char))
+		);
+		// Extract numeric and non-numeric parts
+		result = input.substring(nonNumericIndex);
+		console.log(result);
+		return result;
 	};
 
 	this.getReturnUnit = function (initUnit) {
-		const switchUnit = this.initUnit ? this.initUnit : initUnit;
-
-		switch (switchUnit) {
+		let result;
+		switch (initUnit) {
 			case "gal":
-				return "L"; // Gallons to Liters
+				result = "L"; // Gallons to Liters
+				console.log(result);
+				return result;
 			case "L":
-				return "gal"; // Liters to Gallons
+				result = "gal"; // Liters to Gallons
+				console.log(result);
+				return result;
 			case "mi":
-				return "km"; // Miles to Kilometers
+				result = "km"; // Miles to Kilometers
+				console.log(result);
+				return result;
 			case "km":
-				return "mi"; // Kilometers to Miles
+				result = "mi"; // Kilometers to Miles
+				console.log(result);
+				return result;
 			case "lbs":
-				return "kg"; // Pounds to Kilograms
+				result = "kg"; // Pounds to Kilograms
+				console.log(result);
+				return result;
 			case "kg":
-				return "lbs"; // Kilograms to Pounds
+				result = "lbs"; // Kilograms to Pounds
+				console.log(result);
+				return result;
 			default:
-				return null; // Handle unsupported units or return an error
+				result = null; // Handle unsupported units or return an error
+				console.log(result);
+				return result;
 		}
 	};
 
-	//TODO ALL
 	this.spellOutUnit = function (unit) {
+		let result;
 		switch (unit) {
 			case "gal":
-				return "gallons";
+				result = "gallons";
+				console.log(result);
+				return result;
 			case "L":
-				return "liters";
+				result = "liters";
+				console.log(result);
+				return result;
 			case "mi":
-				return "miles";
+				result = "miles";
+				console.log(result);
+				return result;
 			case "km":
-				return "kilometers";
+				result = "kilometers";
+				console.log(result);
+				return result;
 			case "lbs":
-				return "pounds";
+				result = "pounds";
+				console.log(result);
+				return result;
 			case "kg":
-				return "kilograms";
+				result = "kilograms";
+				console.log(result);
+				return result;
 			default:
-				return null; // Handle unsupported units or return an error
+				result = null; // Handle unsupported units or return an error
+				return result;
 		}
 	};
 
@@ -66,13 +96,43 @@ function ConvertHandler() {
 		const lbsToKg = 0.453592;
 		const miToKm = 1.60934;
 		let result;
-
-		return result;
+		switch (initUnit) {
+			case "gal":
+				result = initNum * galToL;
+				console.log(result);
+				return parseFloat(result.toFixed(5));
+			case "L":
+				result = initNum / galToL;
+				console.log(result);
+				return parseFloat(result.toFixed(5));
+			case "mi":
+				result = initNum * miToKm;
+				console.log(result);
+				return parseFloat(result.toFixed(5));
+			case "km":
+				result = initNum / miToKm;
+				console.log(result);
+				return parseFloat(result.toFixed(5));
+			case "lbs":
+				result = initNum * lbsToKg;
+				console.log(result);
+				return parseFloat(result.toFixed(5));
+			case "kg":
+				result = initNum / lbsToKg;
+				console.log(result);
+				return parseFloat(result.toFixed(5));
+			default:
+				result = null;
+				console.log(result);
+				return result; // Handle unsupported units or return an error
+		}
 	};
 
 	this.getString = function (initNum, initUnit, returnNum, returnUnit) {
 		let result;
-
+		result = `${initNum} ${this.spellOutUnit(
+			initUnit
+		)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
 		return result;
 	};
 }
