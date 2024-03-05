@@ -1,11 +1,16 @@
 function ConvertHandler() {
+	this.findInvalidInput = (input) => {
+    //TODO: allow decimals, allow fractionals
+	};
+
 	this.getNum = function (input) {
+    //TODO this will likely all be wrong
 		let result;
 
+		// Extract numeric and non-numeric parts
 		let nonNumericIndex = Array.from(input).findIndex((char) =>
 			isNaN(Number(char))
 		);
-		// Extract numeric and non-numeric parts
 		result = Number(input.substring(0, nonNumericIndex));
 		console.log(result);
 
@@ -13,6 +18,7 @@ function ConvertHandler() {
 	};
 
 	this.getUnit = function (input) {
+    // TODO: this will likely all be wrong
 		let result;
 		let lowerCaseInput = input.toLowerCase();
 

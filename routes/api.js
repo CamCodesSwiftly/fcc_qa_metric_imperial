@@ -18,9 +18,14 @@ module.exports = function (app) {
 			returnUnit
 		);
 		console.log("------");
-		
-    
-    if (returnUnit === "invalid unit") {
+		const testArea = convertHandler.findInvalidInput(req.query.input);
+		console.log(testArea);
+		console.log("------");
+
+		if (inputNum === "invalid number") {
+			res.send("invalid number");
+		}
+		if (returnUnit === "invalid unit") {
 			res.send("invalid unit");
 		}
 		res.json({
