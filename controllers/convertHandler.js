@@ -14,24 +14,30 @@ function ConvertHandler() {
 
 	this.getUnit = function (input) {
 		let result;
+		let lowerCaseInput = input.toLowerCase();
 
-		let nonNumericIndex = Array.from(input).findIndex((char) =>
+		let nonNumericIndex = Array.from(lowerCaseInput).findIndex((char) =>
 			isNaN(Number(char))
 		);
 		// Extract numeric and non-numeric parts
-		result = input.substring(nonNumericIndex);
+		result = lowerCaseInput.substring(nonNumericIndex);
+		if (result == "l") {
+			console.log("L");
+			return "L";
+		}
 		console.log(result);
 		return result;
 	};
 
 	this.getReturnUnit = function (initUnit) {
 		let result;
-		switch (initUnit) {
+		let lowerCaseInput = initUnit.toLowerCase();
+		switch (lowerCaseInput) {
 			case "gal":
 				result = "L"; // Gallons to Liters
 				console.log(result);
 				return result;
-			case "L":
+			case "l":
 				result = "gal"; // Liters to Gallons
 				console.log(result);
 				return result;
@@ -59,13 +65,14 @@ function ConvertHandler() {
 	};
 
 	this.spellOutUnit = function (unit) {
+		let lowerCaseUnit = unit.toLowerCase();
 		let result;
-		switch (unit) {
+		switch (lowerCaseUnit) {
 			case "gal":
 				result = "gallons";
 				console.log(result);
 				return result;
-			case "L":
+			case "l":
 				result = "liters";
 				console.log(result);
 				return result;
@@ -92,16 +99,17 @@ function ConvertHandler() {
 	};
 
 	this.convert = function (initNum, initUnit) {
+		let lowerCaseUnit = initUnit.toLowerCase();
 		const galToL = 3.78541;
 		const lbsToKg = 0.453592;
 		const miToKm = 1.60934;
 		let result;
-		switch (initUnit) {
+		switch (lowerCaseUnit) {
 			case "gal":
 				result = initNum * galToL;
 				console.log(result);
 				return parseFloat(result.toFixed(5));
-			case "L":
+			case "l":
 				result = initNum / galToL;
 				console.log(result);
 				return parseFloat(result.toFixed(5));

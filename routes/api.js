@@ -19,6 +19,7 @@ module.exports = function (app) {
 			returnNum,
 			returnUnit
 		);
+		console.log("------");
 
 		res.json({
 			initNum: inputNum,
