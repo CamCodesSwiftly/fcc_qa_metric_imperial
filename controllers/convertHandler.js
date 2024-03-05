@@ -58,9 +58,9 @@ function ConvertHandler() {
 				console.log(result);
 				return result;
 			default:
-				result = null; // Handle unsupported units or return an error
+				result = "invalid unit"; // Handle unsupported units or return an error
 				console.log(result);
-				return result;
+				return "invalid unit";
 		}
 	};
 
@@ -93,7 +93,8 @@ function ConvertHandler() {
 				console.log(result);
 				return result;
 			default:
-				result = null; // Handle unsupported units or return an error
+				result = "invalid unit"; // Handle unsupported units or return an error
+				console.log(result);
 				return result;
 		}
 	};
@@ -130,9 +131,9 @@ function ConvertHandler() {
 				console.log(result);
 				return parseFloat(result.toFixed(5));
 			default:
-				result = null;
+				result = "invalid unit";
 				console.log(result);
-				return result; // Handle unsupported units or return an error
+				return result;
 		}
 	};
 
