@@ -1,39 +1,28 @@
 function ConvertHandler() {
-	this.findInvalidInput = (input) => {
-		//TODO: allow decimals, allow fractionals
-		// const regex = /^\d+(\.\d+)?(\/)?(\d+)?(\.\d+)?$/g;
-		const regex = /^\d+(\.\d+)?(\/)?(\d+)?(\.\d+)?.*$/g;
-		let matches = input.match(regex);
-		return matches;
-	};
-
 	this.getNum = function (input) {
 		let result;
 		// check for more than one slash please
 		const slashesRegex = /\//g;
 		let slashes = input.match(slashesRegex);
-		console.log("hey");
 		if (slashes && slashes.length > 1) {
-			console.log("hey2");
+			return "invalid number";
+		}
+
+		//check for commas
+		const commaRegex = /\,/g;
+		let commas = input.match(commaRegex);
+		if (commas) {
 			return "invalid number";
 		}
 
 		// allow for decimals and fractionals
-		console.log("Hey3");
 		const regex = /^\d+(\.\d+)?(\/)?(\d+)?(\.\d+)?/g;
-		console.log("hey4");
 		if (!input.match(regex)) {
 			return 1;
 		}
-		console.log("hey5");
 		let matches = input.match(regex);
 		result = matches[0];
-		console.log("getNum first matching: " + result);
 
-		// //Extract numeric part
-		// const numericRegex = /\D+$/g;
-		// let split = matches[0].split(numericRegex);
-		// console.log("getNum second matching" + split[0]);
 		try {
 			result = eval(result);
 		} catch (error) {
@@ -43,7 +32,6 @@ function ConvertHandler() {
 	};
 
 	this.getUnit = function (input) {
-		// TODO: this will likely all be wrong
 		let result;
 		let lowerCaseInput = input.toLowerCase();
 
